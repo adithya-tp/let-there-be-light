@@ -1,0 +1,349 @@
+/* CSS template used from https://codepen.io/bramus/pen/ExaEqMJ */
+
+/* 1. Enable smooth scrolling */
+html {
+	scroll-behavior: smooth;
+}
+
+/* 2. Make nav sticky */
+main > nav {
+	position: sticky;
+	top: 2rem;
+	align-self: start;
+}
+
+.section-nav a:hover,
+.section-nav a:focus {
+	color: #1d9dff !important;
+    cursor: pointer;
+}
+
+/* 3. ScrollSpy active styles (see JS tab for activation) */
+.section-nav li.active > a {
+	color: #333;
+	font-weight: 400;
+}
+
+/* Sidebar Navigation */
+.section-nav {
+	font-family: 'Raleway', sans-serif;
+	padding-left: 0;
+    margin-left: -2.5rem;
+	border-left: 1px solid #efefef;
+}
+
+.section-nav a {
+	text-decoration: none;
+	display: block;
+	padding: .125rem 0rem;
+	color: #ccc;
+	transition: all 100ms ease-in-out; /* 💡 This small transition makes setting of the active state smooth */
+}
+
+/** Poor man's reset **/
+* {
+	box-sizing: border-box;
+}
+
+html, body {
+	background: #fff;
+}
+
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+h2 {
+	font-family: 'Quicksand', sans-serif;
+	font-size: 30px;
+	font-weight: 600;
+	display: inline-block;
+    position: relative;
+}
+
+h3, h4 {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 600;
+	display: inline-block;
+	position: relative;
+	/* padding-top: 3px;
+	padding-bottom: 15px; */
+}
+
+p {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+}
+
+li {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 16px;
+	padding-top: 8px;
+}
+
+ul, ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+li {
+	margin-left: 1rem;
+}
+
+h1 {
+	font-weight: 300;
+}
+
+/** page layout **/
+main {
+	display: grid;
+	grid-template-columns: 1fr 15em;
+	max-width: 100em;
+	width: 90%;
+	margin: 0 auto;
+}
+
+/** enlarge the sections for this demo, so that we have a long scrollable page **/
+section {
+	margin-top: 5px;
+    padding-right: 5rem;
+    text-align: justify;
+}
+
+.results--panel {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+figure figcaption {
+	margin-top: -3px;
+    border: 3px solid #fac564;
+    text-align: center;
+	border-radius: 5px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 700;
+	font-size: 16px;
+}
+
+.image-container {
+	max-width: 400px; /* Replace with the width of your image */
+}
+
+.image-container img {
+	display: block;
+	min-height: 200px;
+	min-width: 20px;
+	max-width: 350px;
+	height: auto;
+}
+
+.normal-image-container img {
+	display: block;
+	min-height: 120px;
+	min-width: 20px;
+	max-width: 310px;
+	height: auto;
+}
+
+.panel {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.panel img {
+	height: 120px;
+	width: 140px;
+	column-gap: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+
+.tag-container {
+	display: flex;
+	justify-content: center;
+	width: 80%;
+	height: 9%;
+	opacity: 0.80;
+}
+
+.tag-red {
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #ffa30f;
+	border-radius: 4px;
+	padding: 1px 4px;
+	margin-right: 5px;
+	text-align: center;
+	box-shadow: 2px 2px 5px rgba(8, 1, 1, 0.9);
+}
+
+.tag-green {
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	background-color: #4ee18b;
+	border-radius: 4px;
+	padding: 1px 4px;
+	margin-right: 5px;
+	text-align: center;
+	box-shadow: 2px 2px 5px rgba(8, 1, 1, 0.9);
+}
+
+.image-container-fav {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.image-container-fav .row {
+	display: flex;
+	flex-basis: 100%;
+}
+
+.image-container-fav .column {
+	flex: 1;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	/* background-color: #1d9dff; */
+}
+
+.image-container-fav .column {
+	margin: 20px;
+}
+
+.image-container-fav figure {
+	margin: 0;
+	padding: 0;
+	flex: 1;
+	max-width: 100%;
+	display: flex;
+	flex-direction: column;
+	/* background-color:#4ee18b; */
+}
+
+.image-container-fav img {
+	display: block;
+	max-width: 100%;
+	object-fit: cover;
+	height: 100%;
+}
+
+.image-container-fav figcaption {
+	margin-top: -3px;
+	border: 3px solid #fac564;
+	text-align: center;
+	border-radius: 5px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 700;
+	font-size: 16px;
+	width: 100%;
+}
+
+.slider-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+	max-width: 500px;
+}
+
+.slider {
+  	width: 100%;
+}
+
+.slider-labels {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 500px;
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+.slider-labels span {
+	position: relative;
+	width: 20px;
+	height: 20px;
+	display: inline-block;
+	text-align: center;
+	line-height: 20px;
+	cursor: pointer;
+}
+
+.slider-labels span.active:before {
+  	background-color: #333;
+}
+
+.slider-images {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	max-width: 500px;
+	margin-top: 10px;
+}
+
+.slider-images img {
+	max-height: 100px;
+	max-width: 100px;
+	display: none;
+	height: auto;
+}
+
+.slider-images img.active {
+  	display: block;
+}
+
+.image-grid {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.gallery-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.gallery {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.gallery img {
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	cursor: pointer;
+	margin-right: 10px;
+	opacity: 0.5;
+}
+
+.display-images {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.display-images img {
+	max-width: 350px;
+}
+
+.gallery img.active {
+	opacity: 1.0;
+}
+
+.displayed-img {
+	max-width: 500px;
+}
+  

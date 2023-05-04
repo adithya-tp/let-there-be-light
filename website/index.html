@@ -1,0 +1,119 @@
+<!-- HTML template used from https://codepen.io/bramus/pen/ExaEqMJ -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GAN Photo Editing</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+
+    <!-- Include custom styling -->
+	<link rel="stylesheet" type="text/css" href="style.css">
+    
+    <!-- Include js script for smooth navigation in webpage -->
+    <script src="js/script.js"></script>
+    
+    <!-- Include fonts for a better aesthetic feel -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&family=Montserrat:wght@400;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&family=Montserrat:wght@400;600;700&family=Quicksand:wght@300;400;500;600;700&family=Raleway&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<main>
+        <div>
+            <h1>Final Project - Generative Models for Illumination Recovery in Low Light</h1>
+            <p><em>apraveen, lrickett, shrutina</em></p>
+            <!-- Introduction -->
+            <section id="introduction">
+                <h2>
+                    Project Description
+                </h2>
+                <section>
+                    <p>
+                        Images taken in low light or near darkness suffer from limited visibility, loss of detail, and noise. In this project, we aim to explore and utilize multiple generative model architectures to recover the contents of these low light images. Recovering these details has multiple applications from making images more aesthetically pleasing to enhancing images for robotics, such as autonomous driving in the dark. 
+                    </p>
+                    </section>
+                </section>
+            </section>
+
+            <!-- Enlighten-GAN -->
+            <section id="enlighten-gan">
+                <h2>Method 1: Englighten GAN</h2>
+                <p>
+                </p>
+            </section>
+
+            <!-- StyleGAN-NADA -->
+            <section id="stylegan-nada">
+                <h2>Method 2: StyleGAN-NADA</h2>
+                <p>
+                    Another approach we explored, was the use of <a href="https://stylegan-nada.github.io/">StyleGAN-NADA</a>for illumination recovery. The model uses 2 text prompts and the semantic knowledge of CLIP embeddings to describe a source and target domain for an image, and aims to generate a new image in the style defined by the user. Because it works in a zero-shot manner, it is flexible in generating images from domains the pretrained generators have not seen before. We can take advantage of this to observe the results with some prompt engineering in an attempt to move the low-light image to a domain with better lighting. If it doesn’t work well, we can look into manipulating the CLIP embeddings to be more familiar with the requested transition and give better results. 
+                </p>
+            </section>
+            
+            <section id="control-net">
+                <h2>Method 3: Control Net</h2>
+                <p>
+                    <a href="https://arxiv.org/abs/2302.05543">Control-Net</a> is a very recent paper that proposes a way to condition text-to-image generation on extra features in addition to just input text prompts. This allows us to exert greater control over the kind of output image that gets generated. For instance, if you want to generate an image of a “stormtrooper giving a lecture at university”, but want it follow the pose in the picture below (left), you can supply the depth-map (middle, the “extra feature”) in addition to the text prompt, to get the desired generation (right).
+                </p>
+
+                <div class="panel" style="text-align: center;">
+                    <figure class="normal-image-container" style="display: inline-block; width: 200px;">
+                        <img src="assets/control_net/in.png" style="height: 200px; width: 200px;">
+                        <figcaption>Input</figcaption>
+                    </figure>
+                    <figure class="normal-image-container" style="display: inline-block; width: 200px;">
+                        <img src="assets/control_net/depth.png" style="height: 200px; width: 200px;">
+                        <figcaption>Depth</figcaption>
+                    </figure>
+                    <figure class="normal-image-container" style="display: inline-block; width: 200px;">
+                        <img src="assets/control_net/out.png" style="height: 200px; width: 200px;">
+                        <figcaption>Output</figcaption>
+                    </figure>
+                </div>
+
+                <p>
+                    Since this extra feature could be anything (edge map, pose coordinates, segmentation maps, etc.), we fine-tuned the Control-Net model with an image in low illumination as the control feature, to recover the contents of the low light image, as well as experiment with prompts to see what the image might look like in daylight. For the <a href="http://yaksoy.github.io/faid/#:~:text=Processed%20photographs-,People%20(4.3GB),-People%20(1.3GB)">People's Illumination</a> dataset, here's an sample datapoint where you can see the "flash" (low light) image on the left, and the "ambient" (illumination recovered) image on the right.
+                </p>
+                <div class="panel" style="text-align: center;">
+                    <figure class="normal-image-container" style="display: inline-block; width: 200px;">
+                        <img src="assets/control_net/peoples_in.png" style="height: 200px; width: 200px;">
+                        <figcaption>Flash Image (low light)</figcaption>
+                    </figure>
+                    <figure class="normal-image-container" style="display: inline-block; width: 200px;">
+                        <img src="assets/control_net/peoples_out.png" style="height: 200px; width: 200px;">
+                        <figcaption>Ambient Image (desired)</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="conclusion">
+                <h2>Conclusion</h2>
+            </section>
+
+        </div>
+        
+        <nav class="section-nav">
+            <ol>
+                <li><a href="#introduction">Project Description</a>
+                </li>
+                <li><a href="#enlighten-gan">Method 1: Englighten GAN</a>
+                </li>
+                <li><a href="#stylegan-nada">Method 2: StyleGAN-NADA</a>
+                </li>
+                <li><a href="#control-net">Method 3: Control Net</a>
+                </li>
+                <li><a href="#conclusion">Conclusion</a></li>
+            </ol>
+        </nav>
+    </main>
+</body>
+</html>
