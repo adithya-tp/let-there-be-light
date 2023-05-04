@@ -40,7 +40,6 @@
                     <p>
                         Images taken in low light or near darkness suffer from limited visibility, loss of detail, and noise. In this project, we aim to explore and utilize multiple generative model architectures to recover the contents of these low light images. Recovering these details has multiple applications from making images more aesthetically pleasing to enhancing images for robotics, such as autonomous driving in the dark. 
                     </p>
-                    </section>
                 </section>
             </section>
 
@@ -48,15 +47,27 @@
             <section id="enlighten-gan">
                 <h2>Method 1: Englighten GAN</h2>
                 <p>
+                    Description_of_Enlighten_GAN (wasn't sure if I should includue CycleGAN's description here from our report)
                 </p>
+                <section id="results-one" id="subsection">
+                    <h3> Experiments / Results</h3>
+
+                    <p>Description_of_experiments_results (feel free to break up into multiple subsections)</p>
+                </section>
             </section>
 
             <!-- StyleGAN-NADA -->
             <section id="stylegan-nada">
                 <h2>Method 2: StyleGAN-NADA</h2>
                 <p>
-                    Another approach we explored, was the use of <a href="https://stylegan-nada.github.io/">StyleGAN-NADA</a>for illumination recovery. The model uses 2 text prompts and the semantic knowledge of CLIP embeddings to describe a source and target domain for an image, and aims to generate a new image in the style defined by the user. Because it works in a zero-shot manner, it is flexible in generating images from domains the pretrained generators have not seen before. We can take advantage of this to observe the results with some prompt engineering in an attempt to move the low-light image to a domain with better lighting. If it doesn’t work well, we can look into manipulating the CLIP embeddings to be more familiar with the requested transition and give better results. 
+                    Another approach we explored, was the use of <a href="https://stylegan-nada.github.io/">StyleGAN-NADA</a> for illumination recovery. The model uses 2 text prompts and the semantic knowledge of CLIP embeddings to describe a source and target domain for an image, and aims to generate a new image in the style defined by the user. Because it works in a zero-shot manner, it is flexible in generating images from domains the pretrained generators have not seen before. We can take advantage of this to observe the results with some prompt engineering in an attempt to move the low-light image to a domain with better lighting. If it doesn’t work well, we can look into manipulating the CLIP embeddings to be more familiar with the requested transition and give better results. 
                 </p>
+                <section id="results-two" id="subsection">
+                    <h3> Experiments / Results</h3>
+
+                    <p>Description_of_experiments_results (feel free to break up into multiple subsections)</p>
+                </section>
+                
             </section>
             
             <section id="control-net">
@@ -93,6 +104,12 @@
                         <figcaption>Ambient Image (desired)</figcaption>
                     </figure>
                 </div>
+
+                <section id="results-three" id="subsection">
+                    <h3> Experiments / Results</h3>
+
+                    <p>Description_of_experiments_results (feel free to break up into multiple subsections)</p>
+                </section>
             </section>
 
             <section id="conclusion">
@@ -106,10 +123,19 @@
                 <li><a href="#introduction">Project Description</a>
                 </li>
                 <li><a href="#enlighten-gan">Method 1: Englighten GAN</a>
+                    <ul>
+                        <li class=""><a href="#results-one">- Experiments / Results</a></li>
+                    </ul>
                 </li>
                 <li><a href="#stylegan-nada">Method 2: StyleGAN-NADA</a>
+                    <ul>
+                        <li class=""><a href="#results-two">- Experiments / Results</a></li>
+                    </ul>
                 </li>
                 <li><a href="#control-net">Method 3: Control Net</a>
+                    <ul>
+                        <li class=""><a href="#results-three">- Experiments / Results</a></li>
+                    </ul>
                 </li>
                 <li><a href="#conclusion">Conclusion</a></li>
             </ol>
