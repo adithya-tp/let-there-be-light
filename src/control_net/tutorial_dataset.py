@@ -17,7 +17,8 @@ class MyDataset(Dataset):
         # Define transform to resize source images to 32x32
         self.transform = transforms.Compose([
             transforms.Resize((256, 256)),
-            transforms.ToTensor() # convert PIL image to PyTorch tensor
+            transforms.PILToTensor()
+            # transforms.ToTensor() # convert PIL image to PyTorch tensor
         ])
 
     def __len__(self):
@@ -40,11 +41,16 @@ class MyDataset(Dataset):
         # Apply transforms to source and target images
         source = self.transform(source)
         target = self.transform(target)
+        print(source.shape, target.shape)
+
 
         source = source.permute(1, 2, 0)
-        # Normalize target images to [0, 1].
-        # target = (target.float() / 0.5) - 1.0
+        # Normalize source images to [0, 1].
+        source = source.double() / 255.0
+
         target = target.permute(1, 2, 0)
+        # Normalize source images to [-1, 1].
+        target = (target.double() / 127.5) - 1.0
         # print(source.shape)
         # print(target.shape)
 
