@@ -38,21 +38,60 @@
                 </h2>
                 <section>
                     <p>
-                        Images taken in low light or near darkness suffer from limited visibility, loss of detail, and noise. In this project, we aim to explore and utilize multiple generative model architectures to recover the contents of these low light images. Recovering these details has multiple applications from making images more aesthetically pleasing to enhancing images for robotics, such as autonomous driving in the dark. 
+                        Images taken in low light or near darkness suffer from limited visibility, loss of detail, and noise. Common post-processing methods 
+                        such as global brightness and exposure scaling often produce unrealistic, oversaturated images as a result and are typically unable to produce a realistic illuminated image from a low light one. 
+                        In this project, we aim to explore and utilize multiple generative model architectures to recover the contents of these low light images. Recovering these details has multiple applications from making images more aesthetically pleasing to enhancing images for robotics, such as autonomous driving in the dark. 
                     </p>
                 </section>
             </section>
 
             <!-- Enlighten-GAN -->
             <section id="enlighten-gan">
-                <h2>Method 1: Englighten GAN</h2>
+                <h2>Method 1: Enlighten GAN</h2>
                 <p>
-                    Description_of_Enlighten_GAN (wasn't sure if I should includue CycleGAN's description here from our report)
+                    The first approach we explore is <a href="https://github.com/VITA-Group/EnlightenGAN">EnlightenGAN</a>, generative model that is able to enhance low-light images. This model, shown in the following figure,
+                    uses unpaired images for training, improving upon previous methods that required paired low/high lighting supervision for a given image. The model also uses an inverted grayscale version of the input image as an attention map, 
+                    which helps the model focus illumination efforts on the darkest portion of the image. The output of the UNet generator is the illumination component, which is then added to the original 
+                    image to get the final result. EnlightenGAN then uses a combination of global and local discriminators that tell whether the image is illuminated or low-light.  
+                    We use this model as a baseline for comparison with other methods, as well as try to improve upon the results of this model.
+                    <figure class="normal-image-container" style="display: inline-block; width: 700px; max-width: 700px;">
+                        <img src="assets/enlightengan/model.png" style="height: 250px; max-width: 700px; width: 700px;">
+                        <figcaption>EnlightenGAN Model Architecture</figcaption>
+                    </figure>
+                
                 </p>
                 <section id="results-one" id="subsection">
                     <h3> Experiments / Results</h3>
+                    
+                    <section>
+                        <h4>1. Baseline Experiment</h4>
+                        <p>For a baseline comparison of this model, we downloaded pretrained weights and ran it on various datasets. The results reported in the paper look extremely clear and are reported mostly on outdoor scenes. 
+                            We see that the model is able to sufficiently recover detail in low lighting conditions, making the images look as though they were taken during the daytime. 
+                            <figure class="normal-image-container" style="display: inline-block; width: 700px; max-width: 700px;">
+                                <img src="assets/enlightengan/paper-results.png" style="height: 250px; max-width: 700px; width: 700px;">
+                                <figcaption>Baseline: EnlightenGAN Results</figcaption>
+                            </figure>
 
-                    <p>Description_of_experiments_results (feel free to break up into multiple subsections)</p>
+                            However, these high quality results seem to only hold for these outdoor images. When testing on indoor datasets such as LOL (LOw-Light Dataset) or People's Illuminations, we see certain artifacts. 
+                            Namely, there exist lots of noise in the final result and in some cases the hue over the image is green. 
+
+                            <figure class="normal-image-container" style="display: inline-block; width: 325px; max-width: 325px;">
+                                <img src="assets/enlightengan/exp1-noise.png" style="height: 50px; max-width: 325px; width: 325px;">
+                                <figcaption>EnlightenGAN Baseline on LOL dataset (noisy)</figcaption>
+                            </figure>
+
+                            <figure class="normal-image-container" style="display: inline-block; width: 325px; max-width: 325px;">
+                                <img src="assets/enlightengan/exp1-hue.png" style="height: 50px; max-width: 325px; width: 325px;">
+                                <figcaption>EnlightenGAN Baseline on People Illumination dataset (hue)</figcaption>
+                            </figure>
+                        
+                        </p>
+                    </section>
+
+                    <section>
+                        <h4>2. Experiment 2</h4>
+                    </section>
+                 
                 </section>
             </section>
 
