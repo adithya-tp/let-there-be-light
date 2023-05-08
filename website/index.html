@@ -65,25 +65,25 @@
                     
                     <section>
                         <h4>1. Baseline Experiment</h4>
-                        <p>For a baseline comparison of this model, we downloaded pretrained weights and ran it on various datasets. The results reported in the paper look extremely clear and are reported mostly on outdoor scenes. 
-                            We see that the model is able to sufficiently recover detail in low lighting conditions, making the images look as though they were taken during the daytime. 
-                            <figure class="normal-image-container" style="display: inline-block; width: 700px; max-width: 700px;">
-                                <img src="assets/enlightengan/paper-results.png" style="height: 250px; max-width: 700px; width: 700px;">
-                                <figcaption>Baseline: EnlightenGAN Results</figcaption>
-                            </figure>
-
+                        <p>For a baseline comparison of this model, we downloaded pretrained weights and ran it on various datasets. The results reported in the paper look extremely clear and are reported mostly on outdoor scenes. We see that the model is able to sufficiently recover detail in low lighting conditions, making the images look as though they were taken during the daytime. 
+                        </p>
+                        <figure class="normal-image-container" style="display: inline-block; width: 700px; max-width: 700px;">
+                            <img src="assets/enlightengan/paper-results.png" style="height: 250px; max-width: 700px; width: 700px;">
+                            <figcaption>Baseline: EnlightenGAN Results</figcaption>
+                        </figure>
+                        <p>
                             However, these high quality results seem to only hold for these outdoor images. When testing on indoor datasets such as LOL (LOw-Light Dataset) or People's Illuminations, we see certain artifacts. 
                             Namely, there exist lots of noise in the final result and in some cases the hue over the image is green. 
+                        </p>
+                        <figure class="normal-image-container" style="display: inline-block; width: 325px; max-width: 325px;">
+                            <img src="assets/enlightengan/exp1-noise.png" style="height: 50px; max-width: 325px; width: 325px;">
+                            <figcaption>EnlightenGAN Baseline on LOL dataset (noisy)</figcaption>
+                        </figure>
 
-                            <figure class="normal-image-container" style="display: inline-block; width: 325px; max-width: 325px;">
-                                <img src="assets/enlightengan/exp1-noise.png" style="height: 50px; max-width: 325px; width: 325px;">
-                                <figcaption>EnlightenGAN Baseline on LOL dataset (noisy)</figcaption>
-                            </figure>
-
-                            <figure class="normal-image-container" style="display: inline-block; width: 325px; max-width: 325px;">
-                                <img src="assets/enlightengan/exp1-hue.png" style="height: 50px; max-width: 325px; width: 325px;">
-                                <figcaption>EnlightenGAN Baseline on People Illumination dataset (hue)</figcaption>
-                            </figure>
+                        <figure class="normal-image-container" style="display: inline-block; width: 325px; max-width: 325px;">
+                            <img src="assets/enlightengan/exp1-hue.png" style="height: 50px; max-width: 325px; width: 325px;">
+                            <figcaption>EnlightenGAN Baseline on People Illumination dataset (hue)</figcaption>
+                        </figure>
                         
                         </p>
                     </section>
