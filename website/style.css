@@ -129,13 +129,13 @@ figure figcaption {
 	max-width: 400px; /* Replace with the width of your image */
 }
 
-.image-container img {
+/* .image-container img {
 	display: block;
 	min-height: 200px;
 	min-width: 20px;
 	max-width: 350px;
 	height: auto;
-}
+} */
 
 .normal-image-container img {
 	display: block;

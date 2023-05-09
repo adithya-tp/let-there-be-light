@@ -178,6 +178,15 @@
                     </figure>
                 </div>
 
+                <p>
+                    The control-net architecture extends the stable diffusion model with an external network which begins as an exact copy of the initial few layers of the stable diffusion 1.5 model, as those weights contain valuable semantic information. During training, only the external network's weights are tuned - meaning the gradients don't flow through the trained stable diffusion model. At the end of training, we are now to influence the generated image with the conditioning feature - which in our case is the dark image (ie, image taken with flash)
+                </p>
+
+                <figure class="image-container">
+                    <img src="assets/control_net/architecture.png" style="height: auto; width: 600px;">
+                    <figcaption>Control-Net Architecture</figcaption>
+                </figure>
+
                 <section id="results-three" id="subsection">
                     <h3> Experiments / Results</h3>
                     <p>
@@ -252,6 +261,10 @@
 
             <section id="conclusion">
                 <h2>Conclusion</h2>
+
+                <p>
+                    In conclusion, 
+                </p>
             </section>
 
         </div>
