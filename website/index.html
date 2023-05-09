@@ -244,29 +244,23 @@
                         </figure>
                     </div>
                     
-                    <p>
-                        A few points worth noting here:
-                        <li type="-">
-                            The synthesized image from control-net usually looks brighter (more illumination) than the ground truth image.
-                        </li>
-                        <li type="-">
-                            For people's illumination, the identity of the person, and lower level details of the room are lost (see middle row) - eventhough the higher level semantics like the angle of the face, and shape of the background are preserved.
-                        </li>
-                        <li type="-">
-                            The results from the plants dataset looks better - probably because it is easier to guess plant structure than the finer details of human faces.
-                        </li>
-                    </p>
+                    <section>
+                        <h4>Takeaways</h4>
+                        <p>
+                            The main takeaways using control-net for illumination recovery would be:
+                            <li type="-">
+                                The synthesized image from control-net usually looks brighter (more illumination) than the ground truth image.
+                            </li>
+                            <li type="-">
+                                For people's illumination, the identity of the person, and lower level details of the room are lost (see middle row) - eventhough the higher level semantics like the angle of the face, and shape of the background are preserved. Therefore, incorporating a loss function to encourage the network to preserve lower level details might be necessary in future work.
+                            </li>
+                            <li type="-">
+                                The results from the plants dataset looks better - probably because it is easier to guess plant structure than the finer details of human faces.
+                            </li>
+                        </p>
+                    </section>
                 </section>
             </section>
-
-            <section id="conclusion">
-                <h2>Conclusion</h2>
-
-                <p>
-                    In conclusion, 
-                </p>
-            </section>
-
         </div>
         
         <nav class="section-nav">
