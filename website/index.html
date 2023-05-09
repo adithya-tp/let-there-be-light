@@ -89,7 +89,41 @@
                     </section>
 
                     <section>
-                        <h4>2. Experiment 2</h4>
+                        <h4>2. Experimenting with Gaussian Activation Function</h4>
+
+                        <p>In an attempt to automatically learn noise reduction, we tried implementing a gaussian activation function in place of ReLU in the generator model. Gaussian blur is a common way to denoise an image and get rid of high frequency information. Because of this, 
+                            we thought a Gaussian activation function parameterized by g(x) = exp(-x**2) would be able to mimic that functionality. However, we found this to not be the case and the model was unable to learn any illumination changes at all, producing the same image as we had given as input. 
+                            This may be because the Gaussian activation function truncates signal responses that are out of the variance of the distribution to 0. Illumination requires brightening the pixels and using a Gaussian curve for the activation did not allow for bright pixels to be preserved, which also explains why the default ReLU activation was necessary.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h4>3. Automatic Post Processing (hue reduction)</h4>
+
+                        <p>In order to reduce the green hue over the image, we tried automatic white balancing as a post processing step after the generator. This involved taking the image and scaling the pixel values so that the brightest region of the original 
+                            image corresponds to the color white. This worked decently well at not only reducing the green hue over the image but also illuminated the image more. 
+                        
+
+                            <figure class="normal-image-container" style="display: inline-block; width: 200px;">
+                                <img src="assets/enlightengan/orig1.png" style="height: 140px; width: 200px;">
+                                <img src="assets/enlightengan/wb1.png" style="height: 140px; width: 200px;">
+                                <figcaption>White balancing results, original on top and white balanced below</figcaption>
+                            </figure>
+                            <figure class="normal-image-container" style="display: inline-block; width: 200px;">
+                                <img src="assets/enlightengan/orig2.png" style="height: 140px; width: 200px;">
+                                <img src="assets/enlightengan/wb2.jpeg" style="height: 140px; width: 200px;">
+                                <figcaption>White balancing results, original on top and white balanced below</figcaption>
+                            </figure>
+                        
+                        </p>
+                    </section>
+
+                    <section>
+                        <h4>Takeaways</h4>
+                        <p>EnlightenGAN works well for illuminating images past baseline, but does so especially well for images that are not too dark, such as outdoor datasets. When we tested on indoor datasets, we see a significant increase 
+                            in the amount of noise in the final result and a hue over the image. We experienced difficulties in trying to remove these artifacts from the model, and perhaps a more complex model such as a diffusion model 
+                            would be more capable of handling artifacts such as noise. 
+                        </p>
                     </section>
                  
                 </section>
