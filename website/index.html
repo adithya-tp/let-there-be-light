@@ -129,8 +129,8 @@
                 </section>
             </section>
 
-            <!-- StyleGAN-NADA -->
-            <section id="stylegan-nada">
+             <!-- StyleGAN-NADA -->
+             <section id="stylegan-nada">
                 <h2>Method 2: StyleGAN-NADA</h2>
                 <p>
                     Another approach we explored, was the use of <a href="https://stylegan-nada.github.io/">StyleGAN-NADA</a> for illumination recovery. The model uses 2 text prompts and the semantic knowledge of CLIP embeddings to describe a source and target domain for an image, and aims to generate a new image in the style defined by the user. Because it works in a zero-shot manner, it is flexible in generating images from domains the pretrained generators have not seen before. We can take advantage of this to observe the results with some prompt engineering in an attempt to move the low-light image to a domain with better lighting. If it doesn’t work well, we can look into manipulating the CLIP embeddings to be more familiar with the requested transition and give better results. 
@@ -138,8 +138,75 @@
                 <section id="results-two" id="subsection">
                     <h3> Experiments / Results</h3>
 
-                    <p>Description_of_experiments_results (feel free to break up into multiple subsections)</p>
-                </section>
+                    <h4>1. Prompt Engineering with StyleGAN-NADA</h4>
+
+
+                    <div class="panel" style="text-align: center;">
+                        <figure class="normal-image-container" style="display: inline-block; height: 320px;">
+                            <img src="assets/stylegan/dark-bright.png" style="height: 320px; width: 200px ">
+                            <figcaption>"Dark" -> "Bright"</figcaption>
+                            
+                        </figure>
+
+                        <figure class="normal-image-container" style="display: inline-block; height: 320px;">
+                            <img src="assets/stylegan/photo-brighterlighting.png" style="height: 320px; width: 200px ">
+                            <figcaption>"Photo" -> "Brighter Lighting"</figcaption>
+                        </figure>
+
+                        <figure class="normal-image-container" style="display: inline-block; height: 320px;">
+                            <img src="assets/stylegan/photo-flashphoto.png" style="height: 320px; width: 200px ">
+                            <figcaption>"Photo" -> "Flash Photo"</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="panel" style="text-align: center;">
+                        <figure class="normal-image-container" style="display: inline-block; height: 320px;">
+                            <img src="assets/stylegan/photo-illuminated.png" style="height: 320px; width: 200px ">
+                            <figcaption>"Photo" -> "Illuminated"</figcaption>
+                            
+                        </figure>
+
+                        <figure class="normal-image-container" style="display: inline-block; height: 320px;">
+                            <img src="assets/stylegan/photo-increasedbrightness.png" style="height: 320px; width: 200px ">
+                            <figcaption>"Photo" -> "Brightness"</figcaption>
+                        </figure>
+
+                        <figure class="normal-image-container" style="display: inline-block; height: 320px;">
+                            <img src="assets/stylegan/photo-relighting.png" style="height: 320px; width: 200px ">
+                            <figcaption>"Photo" -> "Relighting"</figcaption>
+                        </figure>
+                    </div>
+
+                    <p>We can see by these results that there are some attempts to increase lighting but it does not come out well 
+                        because this model is interested in zero shot learning in terms of a domain shift. It looks closely at a word (e.g: "Simpson")
+                        and would use its pretrained frozen generator to start with the original images (e.g: faces) that eventually turn to look like Simpsons. It is interesting to note that photo -> relighting did 
+                        highlight areas of the face where brightness would increase if light had increased. 
+                    </p>
+    
+                    <h4>2. Fine-tuning CLIP Embeddings</h4>
+
+                    <p>Because CLIP loss plays a role in the domain shift of this model, we thought that finetuning CLIP embeddings would influence
+                    the model accordingly. This was done by loading a pretrained CLIP Model from OpenAI (ViT-B/32) and fine tuning it on the People Illuminations
+                    dataset. This finetuning was done over 3 epochs. A small number was chosen due to size of the dataset and because it was noted that it was easy 
+                    for the model to overfit to the new data rather than generalize. Dataset was built by creating a caption of "flash" for every "flash" photo and 
+                    "ambient" for every "ambient photo".
+
+
+                    The results are shown below:
+                </p>
+                    <br>
+
+                    <figure class="normal-image-container" style="display: inline-block; height: 320px;">
+                        <img src="assets/stylegan/finetuned.png" style="height: 320px; width: 200px ">
+                        <figcaption>"Flash" -> "Ambient"</figcaption>
+                    </figure>
+
+                    <p>
+                        Judging by the results, we can see a bit of the overfit present. Although we cannot expect great results from a model that 
+                        is influenced by text, this finetuned model did a decent job at trying to replace flash features with ambient features. We can see this with 
+                        the increased sharpness of the images and slight increase in brightness. With more finetuning and a larger dataset, this could 
+                        potentially improve. 
+                    </p>
                 
             </section>
             
