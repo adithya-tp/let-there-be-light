@@ -18,3 +18,16 @@ mkdir control/
 cd src/
 python tutorial_train.py
 ```
+
+
+# StyleGAN-NADA setup
+
+```
+cd src/stylegan_nada
+```
+
+There are 2 notebooks you can run.
+(1) Finetuning__CLIP_Embeddings.ipynb
+This is for finetuning the CLIP model on your own dataset.
+(2) stylegan_nada_inference.ipynb
+This is used for downloading pretrained generator models and training StyleGAN-NADA to output image domain shift.
